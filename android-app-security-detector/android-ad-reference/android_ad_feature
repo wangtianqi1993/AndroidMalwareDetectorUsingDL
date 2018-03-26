@@ -1,0 +1,37 @@
+1. 必须添加的权限
+<!-- 必须申明的权限 -->
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+2.onCreate中需添加的函数
+AdManager.init(this,"537ef88653a2993c", "b9e10bcfe994a9fb", 30, true);
+
+
+3.在 res/values 文件夹中添加 attrs.xml。如果你没有添加这个文件，那你将不能在 layout 中设置 AdView 的属性。attrs.xml 文件的内容如下：
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<declare-styleable name="net.youmi.android.AdView">
+<--广告背景颜色[只对文字广告有效](取值范围为#000000----#ffffff) -->
+<attr name="backgroundColor" format="color" />
+<!--广告文本颜色[只对文字广告有效](取值范围为#000000----#ffffff) -->
+<attr name="textColor" format="color" />
+<!--广告背景透明度[只对文字广告有效]，默认为 255，设置范围0-255 -->
+<attr name="backgroundTransparent" format="integer"/>
+</declare-styleable>
+
+
+4.在配置文件中添加AdActivity AdBrowser AdService AdReceiver
+           <activity  
+           android:name="net.youmi.android.AdBrowser"  
+           android:configChanges="keyboard|keyboardHidden|orientation|screenSize"  
+           android:theme="@android:style/Theme.Light.NoTitleBar" >  
+       </activity>   
+       <service  
+           android:name="net.youmi.android.AdService"  
+           android:exported="false" >  
+       </service>  
+       <receiver android:name="net.youmi.android.AdReceiver" >  
+
